@@ -26,9 +26,25 @@ function getComputerChoice()
 
 function promptUser()
 {
-    userChoice = prompt("Rock, Paper, or Scissors? Type your choice.").toLowerCase();
-    console.log(userChoice);
-    return userChoice;
+    let userChoice = null;
+
+    try
+    {
+        userChoice = prompt("Rock, Paper, or Scissors? Type your choice.").toLowerCase();
+    }
+    catch (err)
+    {
+        if (userChoice == null)
+        {
+            console.log("Canceled Game");
+            return null;
+        }
+    }
+    finally
+    {
+        console.log(userChoice);
+        return userChoice;
+    }
 }
 
 
@@ -38,6 +54,10 @@ function getHumanChoice()
 
     while(choice != "rock" && choice != "paper" && choice != "scissors")
     {
+        if (choice == null)
+        {
+            return "canceled";
+        }
         console.log("Invalid Choice: Try Again");
         choice = promptUser();
     }
@@ -94,10 +114,15 @@ function playGame()
     
     while(roundCount <= 5)
     {
-        console.log("Round " + String(roundCount));
         const humanSelection = getHumanChoice();
+        if (humanSelection == "canceled")
+        {
+            return;
+        }
+        console.log("Round " + String(roundCount));
         const computerSelection = getComputerChoice();
         const humanScored = playRound(humanSelection, computerSelection);
+
 
         if (humanScored == true)
         {
