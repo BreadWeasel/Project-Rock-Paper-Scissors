@@ -1,5 +1,5 @@
-console.log("Hello World");
-
+let computerScore = 0;
+let humanScore = 0;
 
 function getComputerChoice()
 {
@@ -12,7 +12,6 @@ function getComputerChoice()
             choice = Math.ceil(Math.random() * 3);
         }
     }
-
     switch(choice)
     {
         case 1:
@@ -22,7 +21,26 @@ function getComputerChoice()
         case 3:
             return "scissors";
     }
-
 }   
+
+
+function promptUser()
+{
+    userChoice = prompt("Rock, Paper, or Scissors? Type your choice.").toLowerCase();
+    return userChoice;
+}
+
+
+function getHumanChoice()
+{
+    choice = promptUser();
+
+    while(choice != "rock" || choice != "paper" || choice != "scissors")
+    {
+        choice = promptUser();
+    }
+    return choice;
+}
+
 
 console.log(getComputerChoice());
