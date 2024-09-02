@@ -23,7 +23,7 @@ function getComputerChoice()
     }
 }   
 
-
+// Now obsolete due to UI
 function promptUser()
 {
     let userChoice = null;
@@ -47,7 +47,7 @@ function promptUser()
     }
 }
 
-
+// Now obsolete due to UI
 function getHumanChoice()
 {
     choice = promptUser();
@@ -138,5 +138,17 @@ function playGame()
     console.log("Final Human Score: " + String(humanScore));
     console.log("Final Computer Score: " + String(computerScore));
 }
+
+// Get buttons from document and assign each the playRound function with the button text as input for humanChoice
+const buttons = document.querySelectorAll("button")
+buttons.forEach((button) => 
+{
+    button.addEventListener("click", () => 
+    {
+        console.log(button.textContent);
+        playRound(button.textContent, getComputerChoice());
+    });
+});
+
 
 //playGame();
