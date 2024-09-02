@@ -123,7 +123,6 @@ function playGame()
         const computerSelection = getComputerChoice();
         const humanScored = playRound(humanSelection, computerSelection);
 
-
         if (humanScored == true)
         {
             humanScore++;
@@ -140,4 +139,4 @@ function playGame()
     console.log("Final Computer Score: " + String(computerScore));
 }
 
-playGame();
+//playGame();
